@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AuthenticationService} from "../../services";
 import {first} from "rxjs/operators";
+import {AuthenticationService} from "../../../../shared/services";
 
 @Component({
   selector: 'app-book-store-login',

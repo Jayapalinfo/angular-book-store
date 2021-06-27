@@ -1,0 +1,12 @@
+{
+ "/users/authenticate/*": {
+   "target": "http://localhost:8091",
+   "secure": false,
+   "logLevel": "debug"
+ },
+  "/books/*": {
+    "target": "http://localhost:8091",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

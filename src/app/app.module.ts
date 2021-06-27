@@ -1,28 +1,33 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import {BookStoreOverviewComponent} from "./modules/book-store/pages/book-store-overview/book-store-overview.component";
-import {BookStoreDetailsComponent} from "./modules/book-store/pages/book-store-details/book-store-details.component";
-import {BookStoreLoginComponent} from "./modules/book-store/pages/book-store-login/book-store-login.component";
-import {ReactiveFormsModule} from "@angular/forms";
+//Library imports
+import {BrowserModule} from '@angular/platform-browser';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {HttpClientModule} from "@angular/common/http";
-import {appRoutingModule} from "./app.routing";
+import {APP_BASE_HREF, LocationStrategy, PathLocationStrategy} from "@angular/common";
+
+//Local imports
+import {SharedModule} from "./modules/shared/shared.module";
+import {AppComponent} from "./app.component";
+import {AppRoutingModule} from "./app.routing";
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookStoreOverviewComponent,
-    BookStoreDetailsComponent,
-    BookStoreLoginComponent
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
+    AppRoutingModule,
     HttpClientModule,
-    appRoutingModule
+    SharedModule.forRoot()
   ],
-  providers: [],
+  providers: [{
+    provide: LocationStrategy, useClass: PathLocationStrategy
+  }, {
+    provide: APP_BASE_HREF, useValue: '/admin'
+  }],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start-mock": "mockserver -p 8091 -m devtools/mock/",
+    "serve-mock": "concurrently \"npm run start-mock\" \"npm run start\""
   },
   "private": true,
   "dependencies": {
@@ -43,6 +45,8 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.1"
+    "typescript": "~3.1.1",
+    "concurrently": "^6.2.0",
+    "mockserver": "^3.1.1"
   }
 }
