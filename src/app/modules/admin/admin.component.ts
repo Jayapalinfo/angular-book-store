@@ -18,11 +18,6 @@ export class AdminComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
-  }
-
   ngOnInit(): void {
   }
 

@@ -13,7 +13,7 @@ const routes: Routes = [
       {path: 'login', component: BookStoreLoginComponent},
       {path: 'overview', component: BookStoreOverviewComponent, canActivate: [AuthGuard]},
       {path: 'details', component: BookStoreDetailsComponent, canActivate: [AuthGuard]},
-      {path: '', pathMatch: 'prefix', redirectTo: 'app/admin'}
+      {path: '', pathMatch: 'prefix', redirectTo: 'login'}
     ]
   }
 ];
