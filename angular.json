@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "angular-book-store"
+  "defaultProject": "angular-book-store",
+  "cli": {
+    "analytics": "94e46e07-357b-4186-832b-7d372deecab2"
+  }
 }
