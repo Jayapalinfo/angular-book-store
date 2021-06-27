@@ -24,7 +24,7 @@ import { NavigationComponent } from './navigation/navigation.component';
   providers: [{
     provide: LocationStrategy, useClass: PathLocationStrategy
   }, {
-    provide: APP_BASE_HREF, useValue: '/admin'
+    provide: APP_BASE_HREF, useValue: '/'
   }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

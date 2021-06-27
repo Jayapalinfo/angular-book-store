@@ -10,9 +10,9 @@ import {AdminComponent} from "./admin.component";
 const routes: Routes = [
   {
     path: '', component: AdminComponent, children: [
-      {path: 'login', component: BookStoreLoginComponent},
       {path: 'overview', component: BookStoreOverviewComponent, canActivate: [AuthGuard]},
       {path: 'details', component: BookStoreDetailsComponent, canActivate: [AuthGuard]},
+      {path: 'login', component: BookStoreLoginComponent},
       {path: '', pathMatch: 'prefix', redirectTo: 'login'}
     ]
   }

@@ -36,6 +36,7 @@ export class NotificationService {
 
   error(message: string, keepAfterRouteChange = false) {
     this.keepAfterRouteChange = keepAfterRouteChange;
+    console.log('message',message);
     this.subject.next({ type: 'error', text: message });
   }
 

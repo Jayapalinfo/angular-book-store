@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Subscription} from "rxjs";
-import {NotificationService} from "../../services/notification.service";
+import {NotificationService} from "../../services";
 
 @Component({
   selector: 'app-notification',
@@ -9,14 +9,13 @@ import {NotificationService} from "../../services/notification.service";
 })
 export class NotificationComponent implements OnInit {
 
-
   private subscription: Subscription;
-  message: string;
+  message: any;
 
-  constructor(private alertService: NotificationService) { }
+  constructor(private notificationService: NotificationService) { }
 
   ngOnInit() {
-    this.subscription = this.alertService.getAlert()
+    this.subscription = this.notificationService.getAlert()
       .subscribe(message => {
         switch (message && message.type) {
           case 'success':
@@ -26,7 +25,6 @@ export class NotificationComponent implements OnInit {
             message.cssClass = 'alert alert-danger';
             break;
         }
-
         this.message = message;
       });
   }
