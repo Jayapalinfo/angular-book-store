@@ -2,7 +2,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {first} from "rxjs/operators";
 
 //Local imports
 import {AuthenticationService, NotificationService} from "../../../../shared/services";
@@ -57,15 +56,12 @@ export class BookStoreLoginComponent implements OnInit {
 
     this.loading = true;
     this.authenticationService.login(this.fields.username.value, this.fields.password.value)
-      .pipe(first())
       .subscribe(
         data => {
-          console.log('data',data);
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          console.log('error',error);
-          this.notificationService.error(error);
+          this.notificationService.error(error.error.message);
           this.loading = false;
         });
   }

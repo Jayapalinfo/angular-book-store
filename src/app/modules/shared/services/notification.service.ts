@@ -1,3 +1,4 @@
+//Library imports
 import { Injectable } from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import {NavigationStart, Router} from "@angular/router";
@@ -36,7 +37,6 @@ export class NotificationService {
 
   error(message: string, keepAfterRouteChange = false) {
     this.keepAfterRouteChange = keepAfterRouteChange;
-    console.log('message',message);
     this.subject.next({ type: 'error', text: message });
   }
 
