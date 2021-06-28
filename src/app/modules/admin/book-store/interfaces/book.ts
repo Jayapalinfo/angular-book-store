@@ -1,12 +1,11 @@
 export interface Book {
   id: string;
   title: string;
-  subtitle: string;
-  authors: string[];
+  authors: string;
   publisher: string;
   publishDate: string;
   description: string;
-  averageRating: number;
-  ratingsCount: number;
+  averageRating: string;
+  totalPages: number;
   price: number;
 }

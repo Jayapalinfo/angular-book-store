@@ -37,7 +37,7 @@ export class BookStoreOverviewComponent implements OnInit {
   }
 
   getBookDetails(id){
-    this.router.navigateByUrl('app/admin/books/details/'+id);
+    this.router.navigateByUrl('books/details/'+id);
   }
 
 }

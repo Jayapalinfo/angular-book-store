@@ -1,6 +1,7 @@
 <table border="1" class="table table-condensed">
   <thead>
   <tr>
+    <th>Id</th>
     <th>Name</th>
     <th>Description</th>
     <th>Publisher</th>
@@ -9,6 +10,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let book of books" (click)="getBookDetails(book.id)">
+    <td>{{book.id}}</td>
     <td>{{book.title}}</td>
     <td>{{book.description}}</td>
     <td>{{book.publisher}}</td>
