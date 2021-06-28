@@ -1,9 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { BookStoreDetailsComponent } from './book-store-details.component';
+//Library imports
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+
+//Local imports
+import {BookStoreDetailsComponent} from './book-store-details.component';
 
 describe('BookStoreDetailsComponent', () => {
   let component: BookStoreDetailsComponent;
@@ -12,10 +14,9 @@ describe('BookStoreDetailsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule, HttpClientTestingModule],
-      declarations: [ BookStoreDetailsComponent ],
+      declarations: [BookStoreDetailsComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

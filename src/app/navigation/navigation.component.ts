@@ -14,7 +14,7 @@ import {User} from "../modules/admin/book-store/interfaces/user";
 export class NavigationComponent {
   navigationItems: NavigationItem[] = [
     {name: 'Admin', link: '/app/admin'},
-    {name: 'Books', link: '/app/admin'}
+    {name: 'Books', link: '/app/admin/books/overview'}
   ];
 
   currentUser: User;

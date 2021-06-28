@@ -12,7 +12,7 @@ describe('NotificationService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientTestingModule],
+      imports: [RouterTestingModule],
       providers: [NotificationService]
     });
     service = TestBed.inject(NotificationService);

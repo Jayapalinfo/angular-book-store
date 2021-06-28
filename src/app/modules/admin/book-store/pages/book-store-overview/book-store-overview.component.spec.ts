@@ -15,8 +15,7 @@ describe('BookStoreOverviewComponent', () => {
       imports: [RouterTestingModule, HttpClientTestingModule],
       declarations: [ BookStoreOverviewComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

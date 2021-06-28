@@ -1,10 +1,10 @@
 //Library imports
-import { Component, OnInit } from '@angular/core';
-import {BookStoreService} from "../../services";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Book} from "../../interfaces/book";
 
 //Local imports
+import {BookStoreService} from "../../services";
+import {Book} from "../../interfaces/book";
 
 @Component({
   selector: 'app-book-store-details',
@@ -13,10 +13,11 @@ import {Book} from "../../interfaces/book";
 })
 export class BookStoreDetailsComponent implements OnInit {
 
-  id:string;
+  id: string;
   book: Book;
 
-  constructor(private readonly route: ActivatedRoute, private readonly bookStoreService: BookStoreService) { }
+  constructor(private readonly route: ActivatedRoute, private readonly bookStoreService: BookStoreService) {
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -29,7 +30,7 @@ export class BookStoreDetailsComponent implements OnInit {
         this.book = data;
       },
       error => {
-        this.book = null ;
+        this.book = null;
       }
     );
   }

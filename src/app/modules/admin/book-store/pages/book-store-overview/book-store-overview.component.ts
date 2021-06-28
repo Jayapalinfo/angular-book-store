@@ -4,6 +4,7 @@ import {Component, OnInit} from '@angular/core';
 //Local imports
 import {Book} from "../../interfaces/book";
 import {BookStoreService} from "../../services";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-book-store-overview',
@@ -14,7 +15,7 @@ export class BookStoreOverviewComponent implements OnInit {
 
   books: Book[];
 
-  constructor(private bookStoreService: BookStoreService) {
+  constructor(private readonly bookStoreService: BookStoreService,private readonly router: Router) {
     this.books = [];
   }
 
@@ -33,6 +34,10 @@ export class BookStoreOverviewComponent implements OnInit {
         this.books = [];
       }
     );
+  }
+
+  getBookDetails(id){
+    this.router.navigateByUrl('app/admin/books/details/'+id);
   }
 
 }

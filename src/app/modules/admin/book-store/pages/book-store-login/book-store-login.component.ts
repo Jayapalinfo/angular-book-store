@@ -23,13 +23,13 @@ export class BookStoreLoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private notificationService: NotificationService
-  ) {
+    private notificationService: NotificationService)
+  {
     this.loading = false;
     this.submitted = false;
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/overview']);
+      this.router.navigate(['books/overview']);
     }
   }
 
@@ -38,7 +38,6 @@ export class BookStoreLoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }

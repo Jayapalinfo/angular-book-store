@@ -6,6 +6,7 @@ import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 
 //Local imports
 import {BookStoreLoginComponent} from './book-store-login.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 describe('BookStoreLoginComponent', () => {
   let component: BookStoreLoginComponent;
@@ -13,7 +14,8 @@ describe('BookStoreLoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientTestingModule],
+      imports: [RouterTestingModule, HttpClientTestingModule, FormsModule,
+        ReactiveFormsModule],
       declarations: [BookStoreLoginComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
@@ -27,5 +29,10 @@ describe('BookStoreLoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render title in a h2 tag', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h2').textContent).toContain('Login');
   });
 });
