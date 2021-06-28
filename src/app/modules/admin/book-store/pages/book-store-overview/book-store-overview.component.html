@@ -1,1 +1,18 @@
-<p>book-store-overview works!</p>
+<table border="1" class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Publisher</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let book of books">
+    <td>{{book.title}}</td>
+    <td>{{book.description}}</td>
+    <td>{{book.publisher}}</td>
+    <td>{{book.price | currency: 'INR'}}</td>
+  </tr>
+  </tbody>
+</table>

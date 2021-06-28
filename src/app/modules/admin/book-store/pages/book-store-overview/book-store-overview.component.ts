@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+//Library imports
+import {Component, OnInit} from '@angular/core';
+
+//Local imports
+import {Book} from "../../interfaces/book";
+import {BookStoreService} from "../../services";
 
 @Component({
   selector: 'app-book-store-overview',
@@ -7,9 +12,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookStoreOverviewComponent implements OnInit {
 
-  constructor() { }
+  books: Book[];
+
+  constructor(private bookStoreService: BookStoreService) {
+    this.books = [];
+  }
 
   ngOnInit(): void {
+    this.getBooks();
+  }
+
+  getBooks() {
+    this.bookStoreService.getBooks().subscribe(
+      data => {
+        this.books = data;
+      },
+      error => {
+        this.books = [];
+      }
+    );
   }
 
 }

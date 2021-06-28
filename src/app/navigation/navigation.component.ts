@@ -1,5 +1,8 @@
+//Library imports
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+
+//Local imports
 import {AuthenticationService} from "../modules/shared/services";
 import {User} from "../modules/admin/book-store/interfaces/user";
 

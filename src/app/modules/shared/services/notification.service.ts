@@ -1,5 +1,5 @@
 //Library imports
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import {NavigationStart, Router} from "@angular/router";
 
@@ -26,22 +26,37 @@ export class NotificationService {
     });
   }
 
+  /**
+   * Get the message if any
+   */
   getAlert(): Observable<any> {
     return this.subject.asObservable();
   }
 
+  /**
+   * Set the success message
+   * @param message actual message
+   * @param keepAfterRouteChange flag to keep message
+   */
   success(message: string, keepAfterRouteChange = false) {
     this.keepAfterRouteChange = keepAfterRouteChange;
-    this.subject.next({ type: 'success', text: message });
+    this.subject.next({type: 'success', text: message});
   }
 
+  /**
+   * Set error message
+   * @param message actual message
+   * @param keepAfterRouteChange flag to keep message
+   */
   error(message: string, keepAfterRouteChange = false) {
     this.keepAfterRouteChange = keepAfterRouteChange;
-    this.subject.next({ type: 'error', text: message });
+    this.subject.next({type: 'error', text: message});
   }
 
+  /**
+   * Clear the notifications
+   */
   clear() {
-    // clear by calling subject.next() without parameters
     this.subject.next();
   }
 

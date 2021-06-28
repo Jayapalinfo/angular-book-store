@@ -1,1 +1,29 @@
-<p>book-store-details works!</p>
+<div class="row">
+
+  <!-- master details for book -->
+  <div class="col-lg-9">
+
+    <div class="row">
+
+      <!-- To display the book info -->
+      <div class="col-12 col-md-8">
+
+        <h3>{{book.title}}</h3>
+        <hr/>
+
+        <p>{{book.description}}</p>
+        <hr/>
+
+        <h4>Price: <strong>{{book.price | currency: 'INR'}}</strong></h4>
+        <hr/>
+
+        <h6>Qty. Available: </h6>
+        <hr/>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

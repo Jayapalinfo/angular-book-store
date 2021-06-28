@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+//Library imports
+import {Component, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
+
+//Local imports
 import {NotificationService} from "../../services";
 
 @Component({
@@ -12,7 +15,8 @@ export class NotificationComponent implements OnInit {
   private subscription: Subscription;
   message: any;
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationService: NotificationService) {
+  }
 
   ngOnInit() {
     this.subscription = this.notificationService.getAlert()

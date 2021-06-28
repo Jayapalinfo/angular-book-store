@@ -20,10 +20,18 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
+  /**
+   * Get the current logged in user details
+   */
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
 
+  /**
+   * Login as admin user and validate the user details
+   * @param username logged in username
+   * @param password logged in password
+   */
   login(username: string, password: string) {
     return this.http.post<User>(`/users/authenticate`, {username, password})
       .pipe(
@@ -32,10 +40,17 @@ export class AuthenticationService {
         ));
   }
 
+  /**
+   * Logout for curren user
+   */
   logout() {
     this.currentUserSubject.next(null);
   }
 
+  /**
+   * Throw an error message
+   * @param message error message
+   */
   error(message) {
     return throwError({error: {message}});
   }

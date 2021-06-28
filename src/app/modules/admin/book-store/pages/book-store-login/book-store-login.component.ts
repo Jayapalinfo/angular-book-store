@@ -61,6 +61,7 @@ export class BookStoreLoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
+          console.log('error',error)
           this.notificationService.error(error.error.message);
           this.loading = false;
         });
