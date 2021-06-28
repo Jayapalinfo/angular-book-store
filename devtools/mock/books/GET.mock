@@ -1,0 +1,29 @@
+HTTP/1.1 200 OK
+Content-Type: application/json, charset=utf-8
+
+[
+  {
+    "id": "string",
+    "title": "string",
+    "subtitle": "string",
+    "authors": [],
+    "publisher": "string",
+    "publishDate": "string",
+    "description": "string",
+    "averageRating": "number",
+    "ratingsCount": "number",
+    "price": "120.00"
+  },
+  {
+    "id": "string",
+    "title": "string",
+    "subtitle": "string",
+    "authors": [],
+    "publisher": "string",
+    "publishDate": "string",
+    "description": "string",
+    "averageRating": "number",
+    "ratingsCount": "number",
+    "price": "150.00"
+  }
+]

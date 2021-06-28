@@ -1,5 +1,8 @@
+//Library imports
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+
+//Local imports
 import {User} from "./book-store/interfaces/user";
 import {AuthenticationService} from "../shared/services";
 
@@ -8,7 +11,7 @@ import {AuthenticationService} from "../shared/services";
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent {
 
   title = 'Book store Admin';
 
@@ -16,9 +19,6 @@ export class AdminComponent implements OnInit {
 
   constructor(private router: Router, private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-  }
-
-  ngOnInit(): void {
   }
 
 }

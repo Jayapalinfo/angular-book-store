@@ -1,5 +1,5 @@
 //Library imports
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 
 //Local imports
@@ -13,10 +13,9 @@ import {User} from "../modules/admin/book-store/interfaces/user";
 })
 export class NavigationComponent {
   navigationItems: NavigationItem[] = [
-    {name: 'Admin', link: '/app/admin'}
+    {name: 'Admin', link: '/app/admin'},
+    {name: 'Books', link: '/app/admin'}
   ];
-
-  readonly link = 'app/admin';
 
   currentUser: User;
 
@@ -30,7 +29,7 @@ export class NavigationComponent {
   }
 }
 
-export class NavigationItem {
+export interface NavigationItem {
   link: string;
   name: string;
 }

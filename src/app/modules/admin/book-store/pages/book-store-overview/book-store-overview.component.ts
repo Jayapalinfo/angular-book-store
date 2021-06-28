@@ -25,9 +25,11 @@ export class BookStoreOverviewComponent implements OnInit {
   getBooks() {
     this.bookStoreService.getBooks().subscribe(
       data => {
+        console.log('data',data);
         this.books = data;
       },
       error => {
+        console.log('error',error);
         this.books = [];
       }
     );

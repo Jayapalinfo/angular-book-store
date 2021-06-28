@@ -8,10 +8,13 @@ import {NavigationStart, Router} from "@angular/router";
 })
 export class NotificationService {
 
-  private subject = new Subject<any>();
-  private keepAfterRouteChange = false;
+  private subject: Subject<any>;
+  private keepAfterRouteChange: boolean;
 
   constructor(private router: Router) {
+
+    this.subject = new Subject<any>();
+    this.keepAfterRouteChange = false;
     // clear alert messages on route change unless 'keepAfterRouteChange' flag is true
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {

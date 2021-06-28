@@ -14,8 +14,8 @@ import {AuthenticationService, NotificationService} from "../../../../shared/ser
 export class BookStoreLoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  loading = false;
-  submitted = false;
+  loading: boolean;
+  submitted: boolean;
   returnUrl: string;
 
   constructor(
@@ -25,9 +25,11 @@ export class BookStoreLoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private notificationService: NotificationService
   ) {
+    this.loading = false;
+    this.submitted = false;
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/overview']);
     }
   }
 
@@ -41,7 +43,6 @@ export class BookStoreLoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  // convenience getter for easy access to form fields
   get fields() {
     return this.loginForm.controls;
   }
@@ -49,7 +50,7 @@ export class BookStoreLoginComponent implements OnInit {
   onClickSubmit() {
     this.submitted = true;
 
-    // stop here if form is invalid
+    // form validation
     if (this.loginForm.invalid) {
       return;
     }
@@ -61,7 +62,6 @@ export class BookStoreLoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          console.log('error',error)
           this.notificationService.error(error.error.message);
           this.loading = false;
         });

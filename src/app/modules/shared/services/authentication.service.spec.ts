@@ -1,12 +1,20 @@
-import { TestBed } from '@angular/core/testing';
+//Library imports
+import {TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
-import { AuthenticationService } from './authentication.service';
+//Local imports
+import {AuthenticationService} from './authentication.service';
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;
+  let httpClientSpy: { get: jasmine.Spy }
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      providers: [AuthenticationService]
+    });
     service = TestBed.inject(AuthenticationService);
   });
 

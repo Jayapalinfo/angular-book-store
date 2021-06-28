@@ -1,6 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+//Library imports
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 
-import { BookStoreLoginComponent } from './book-store-login.component';
+//Local imports
+import {BookStoreLoginComponent} from './book-store-login.component';
 
 describe('BookStoreLoginComponent', () => {
   let component: BookStoreLoginComponent;
@@ -8,9 +13,10 @@ describe('BookStoreLoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookStoreLoginComponent ]
-    })
-    .compileComponents();
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      declarations: [BookStoreLoginComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    }).compileComponents();
   });
 
   beforeEach(() => {

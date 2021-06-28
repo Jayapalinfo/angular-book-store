@@ -1,6 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+//Library imports
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from "@angular/router/testing";
+import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 
-import { NavigationComponent } from './navigation.component';
+//Local imports
+import {NavigationComponent} from './navigation.component';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -8,9 +13,11 @@ describe('NavigationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavigationComponent ]
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      declarations: [NavigationComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

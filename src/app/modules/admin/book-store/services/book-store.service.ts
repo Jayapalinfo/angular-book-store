@@ -22,7 +22,7 @@ export class BookStoreService {
   public getBooks(): Observable<Book[]>{
     const headers = new HttpHeaders();
     this.apiBaseUrl = environment.apiBaseUrl;
-    return this.httpClient.get<Book[]>(`$(this.apiBaseUrl)/books)`, {headers});
+    return this.httpClient.get<Book[]>(`${this.apiBaseUrl}/books`, {headers});
   }
 
   /**
@@ -33,6 +33,6 @@ export class BookStoreService {
   public getBookDetails(id:string): Observable<Book>{
     const headers = new HttpHeaders();
     this.apiBaseUrl = environment.apiBaseUrl;
-    return this.httpClient.get<Book>(`$(this.apiBaseUrl)/books/${id}`, {headers});
+    return this.httpClient.get<Book>(`${this.apiBaseUrl}/books/${id}`, {headers});
   }
 }

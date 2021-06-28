@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GlobalErrorInterceptor } from './global-error.interceptor.ts';
+import { GlobalErrorInterceptor } from './global-error.interceptor';
 
 describe('GlobalErrorInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
