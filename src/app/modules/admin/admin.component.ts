@@ -13,8 +13,6 @@ import {AuthenticationService} from '../shared/services';
 })
 export class AdminComponent {
 
-  title = 'Book store Admin';
-
   currentUser: User;
 
   constructor(private router: Router, private authenticationService: AuthenticationService) {

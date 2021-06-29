@@ -29,4 +29,8 @@ describe('NavigationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should be logout and go to login', () => {
+    component.logout();
+  });
 });

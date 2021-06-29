@@ -24,7 +24,7 @@ export class NavigationComponent {
 
   logout() {
     this.authenticationService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 }
 

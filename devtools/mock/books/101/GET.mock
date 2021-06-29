@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Content-Type: application/json, charset=utf-8
+Access-Control-Allow-Origin: *
+
+{
+  "id": "101",
+  "title": "Secrets of the JavaScript Ninja",
+  "authors": "John Resig & Bear Bibeault",
+  "publisher": "Manning Publications",
+  "publishDate": "2016-08-15",
+  "description": "More than ever, the web is a universal platform for all types of applications, and JavaScript is the language of the web",
+  "averageRating": "4.2",
+  "totalPages": "550",
+  "price": "950.00"
+}

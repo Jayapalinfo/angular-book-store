@@ -23,4 +23,15 @@ describe('NotificationService', () => {
   it('should clear notifications', () => {
     service.clear();
   });
+
+  it('should display notifications', () => {
+    const  notifications = [{
+      type: 'error',
+      notificationsMessages: [{
+        code: '500',
+        message: 'Server error'
+      }]
+    }];
+    service.displayNotifications(notifications);
+  });
 });

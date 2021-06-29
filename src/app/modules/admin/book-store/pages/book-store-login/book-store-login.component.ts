@@ -38,7 +38,8 @@ export class BookStoreLoginComponent implements OnInit {
       password: ['', Validators.required]
     });
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    console.log('url', this.route.snapshot.queryParams['returnUrl']);
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
   }
 
   get fields() {
@@ -57,6 +58,9 @@ export class BookStoreLoginComponent implements OnInit {
     this.authenticationService.login(this.fields.username.value, this.fields.password.value)
       .subscribe(
         data => {
+          if (!this.returnUrl) {
+            this.returnUrl = 'books/overview';
+          }
           this.router.navigate([this.returnUrl]);
         },
         error => {

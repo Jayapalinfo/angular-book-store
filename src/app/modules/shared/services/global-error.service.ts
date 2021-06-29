@@ -13,15 +13,10 @@ export class GlobalErrorService {
 
   handleError(error: HttpErrorResponse) {
     if (error.error.errors) {
-      error.error.errors.forEach((errorElement) => {
-        errorElement.message = `${errorElement.message}`;
-      });
+      this.errorSubject$.next([{type: 'error', notificationMessages: error.error.errors}]);
     } else {
-      error.error.errors = [{
-        message: error.statusText
-      }];
+      this.errorSubject$.next([{type: 'error', notificationMessages: [{code: error.status, message: error.statusText}]}]);
     }
-    this.errorSubject$.next([{type: 'error', message: error.error.error}]);
     return error;
   }
 

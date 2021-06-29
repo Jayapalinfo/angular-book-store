@@ -17,6 +17,7 @@ export class BookStoreDetailsComponent implements OnInit {
   book: Book;
 
   constructor(private readonly route: ActivatedRoute, private readonly bookStoreService: BookStoreService) {
+    this.book = null;
   }
 
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class BookStoreDetailsComponent implements OnInit {
         this.book = data;
       },
       error => {
+        console.log('error',error);
         this.book = null;
       }
     );

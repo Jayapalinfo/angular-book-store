@@ -46,7 +46,7 @@ describe('BookStoreService', () => {
     }];
     httpClientSpy.get.and.returnValue(of(expectedData));
     service.getBooks().subscribe(data => {
-      expect(data[0].id).toEqual('string');
+      expect(data[0].id).toEqual('100');
     });
   });
 

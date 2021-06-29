@@ -21,18 +21,13 @@ describe('GlobalErrorService', () => {
   it('should handle server general error response', () => {
     const errorResponse = new HttpErrorResponse({
       error: {
-        errors: [{
-          message: 'Internal server error'
-        }]
+        errors: [{ message: 'Internal server error' }]
       }
     });
-    const handleErrorRes = [{
-      type: 'error', messages: [{
-        message: 'Internal server error'
-      }]
-    }];
+    const handleErrorRes = [{ type: 'error', messages: [{ message: 'Internal server error' }] }];
     service.handleError(errorResponse);
     service.errorObservable.subscribe(err => {
+      console.log('err',err);
       expect(err).toEqual(handleErrorRes);
     });
   });
@@ -40,9 +35,8 @@ describe('GlobalErrorService', () => {
   it('should clear the error response', () => {
     service.clearError();
     service.errorObservable.subscribe(err => {
-      expect(err).toEqual([]);
+      expect(err).toEqual(null);
     });
   });
-
 
 });

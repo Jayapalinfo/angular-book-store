@@ -47,7 +47,11 @@ export class AuthenticationService {
           }
         ),
         catchError(error => {
-          error = [{type: 'error', messages: [{message: error.message}]}];
+          if (error.error && error.error.errors) {
+            error = [{type: 'error', notificationMessages: error.error.errors}];
+          }else {
+            error = [{type: 'error', notificationMessages: [{code: '401', message: error.message}]}];
+          }
           return throwError(error);
         })
       );
@@ -59,14 +63,7 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
-    this.router.navigate(['/account/login']);
+    this.router.navigate(['/']);
   }
 
-  /**
-   * Throw an error message
-   * @param message error message
-   */
-  error(message) {
-    return throwError([{error: {message}}]);
-  }
 }
