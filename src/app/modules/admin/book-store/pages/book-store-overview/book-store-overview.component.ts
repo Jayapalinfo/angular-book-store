@@ -1,10 +1,10 @@
-//Library imports
+// Library imports
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
-//Local imports
-import {Book} from "../../interfaces/book";
-import {BookStoreService} from "../../services";
-import {Router} from "@angular/router";
+// Local imports
+import {Book} from '../../interfaces/book';
+import {BookStoreService} from '../../services';
 
 @Component({
   selector: 'app-book-store-overview',
@@ -15,7 +15,7 @@ export class BookStoreOverviewComponent implements OnInit {
 
   books: Book[];
 
-  constructor(private readonly bookStoreService: BookStoreService,private readonly router: Router) {
+  constructor(private readonly bookStoreService: BookStoreService, private readonly router: Router) {
     this.books = [];
   }
 
@@ -26,18 +26,16 @@ export class BookStoreOverviewComponent implements OnInit {
   getBooks() {
     this.bookStoreService.getBooks().subscribe(
       data => {
-        console.log('data',data);
         this.books = data;
       },
       error => {
-        console.log('error',error);
         this.books = [];
       }
     );
   }
 
-  getBookDetails(id){
-    this.router.navigateByUrl('books/details/'+id);
+  getBookDetails(id) {
+    this.router.navigateByUrl('books/details/' + id);
   }
 
 }

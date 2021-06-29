@@ -1,10 +1,10 @@
-//Library imports
+// Library imports
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
-//Local imports
-import {User} from "./book-store/interfaces/user";
-import {AuthenticationService} from "../shared/services";
+// Local imports
+import {User} from './book-store/interfaces/user';
+import {AuthenticationService} from '../shared/services';
 
 @Component({
   selector: 'app-admin',

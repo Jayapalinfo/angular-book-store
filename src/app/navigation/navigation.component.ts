@@ -1,10 +1,10 @@
-//Library imports
+// Library imports
 import {Component} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
-//Local imports
-import {AuthenticationService} from "../modules/shared/services";
-import {User} from "../modules/admin/book-store/interfaces/user";
+// Local imports
+import {AuthenticationService} from '../modules/shared/services';
+import {User} from '../modules/admin/book-store/interfaces/user';
 
 @Component({
   selector: 'app-navigation',
@@ -13,7 +13,6 @@ import {User} from "../modules/admin/book-store/interfaces/user";
 })
 export class NavigationComponent {
   navigationItems: NavigationItem[] = [
-    {name: 'Admin', link: '/app/admin'},
     {name: 'Books', link: '/app/admin/books/overview'}
   ];
 

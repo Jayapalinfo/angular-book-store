@@ -1,1 +1,1 @@
-export * from './global-error.interceptor'
+export * from './global-error.interceptor';

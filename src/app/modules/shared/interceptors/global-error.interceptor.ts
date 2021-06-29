@@ -1,28 +1,31 @@
-//Library imports
+// Library imports
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpRequest} from "@angular/common/http";
-import {Observable, throwError} from "rxjs";
-import {catchError} from "rxjs/operators";
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpRequest} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
-//Local imports
-import {AuthenticationService} from "../services";
+// Local imports
+import {AuthenticationService} from '../services';
+import {GlobalErrorService} from '../services/global-error.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalErrorInterceptor {
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private readonly authenticationService: AuthenticationService, private readonly globalErrorService: GlobalErrorService) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(request).pipe(catchError(err => {
-      if (err.status === 401) {
+    this.globalErrorService.clearError();
+    return next.handle(request).pipe(catchError((error: HttpErrorResponse) => {
+      if (error.status === 401) {
         this.authenticationService.logout();
         location.reload();
+      } else {
+        this.globalErrorService.handleError(error);
+        return throwError(error);
       }
-      const error = err.error.error.message || err.statusText;
-      return throwError(error);
     }))
   }
 }

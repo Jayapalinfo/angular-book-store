@@ -1,6 +1,6 @@
-//Library imports
+// Library imports
 import {Routes, RouterModule} from '@angular/router';
-import {NgModule} from "@angular/core";
+import {NgModule} from '@angular/core';
 
 const routers: Routes = [
   {path: 'app/admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)},

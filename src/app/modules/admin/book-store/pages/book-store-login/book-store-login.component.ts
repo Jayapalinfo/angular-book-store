@@ -1,10 +1,10 @@
-//Library imports
+// Library imports
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 
-//Local imports
-import {AuthenticationService, NotificationService} from "../../../../shared/services";
+// Local imports
+import {AuthenticationService, NotificationService} from '../../../../shared/services';
 
 @Component({
   selector: 'app-book-store-login',
@@ -23,8 +23,7 @@ export class BookStoreLoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private notificationService: NotificationService)
-  {
+    private notificationService: NotificationService) {
     this.loading = false;
     this.submitted = false;
     // redirect to home if already logged in
@@ -61,7 +60,7 @@ export class BookStoreLoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          this.notificationService.error(error.error.message);
+          this.notificationService.displayNotifications(error);
           this.loading = false;
         });
   }

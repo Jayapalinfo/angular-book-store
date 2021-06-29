@@ -1,29 +1,76 @@
-<div class="row">
-
-  <!-- master details for book -->
-  <div class="col-lg-9">
-
-    <div class="row">
-
-      <!-- To display the book info -->
-      <div class="col-12 col-md-8">
-
-        <h3>{{book.title}}</h3>
-        <hr/>
-
-        <p>{{book.description}}</p>
-        <hr/>
-
-        <h4>Price: <strong>{{book.price | currency: 'INR'}}</strong></h4>
-        <hr/>
-
-        <h6>Qty. Available: </h6>
-        <hr/>
-
-      </div>
-
+<div class="container">
+  <div class="row">
+    <div class="col-sm-11 text-center"><h2>Book Details</h2></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      Name
     </div>
-
+    <div class="col-sm-8">
+      {{book.title}}
+    </div>
   </div>
 
+  <div class="row">
+    <div class="col-sm-3">
+      Author
+    </div>
+    <div class="col-sm-8">
+      {{book.authors}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      Publisher
+    </div>
+    <div class="col-sm-8">
+      {{book.publisher}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      Publish Date
+    </div>
+    <div class="col-sm-8">
+      {{book.publishDate | date: 'dd-MM-yyyy' }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      Description
+    </div>
+    <div class="col-sm-8">
+      {{book.description}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      Average Rating
+    </div>
+    <div class="col-sm-8">
+      {{book.averageRating}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      Total Pages
+    </div>
+    <div class="col-sm-8">
+      {{book.totalPages}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      Price
+    </div>
+    <div class="col-sm-8">
+      {{book.price | currency: 'INR'}}
+    </div>
+  </div>
 </div>

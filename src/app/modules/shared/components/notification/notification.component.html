@@ -1,1 +1,5 @@
-﻿<div *ngIf="message" [ngClass]="message.cssClass">{{message.text}}</div>
+﻿<div *ngFor="let notification of notifications">
+  <div *ngFor="let error of notification.messages" [ngClass]="{'alert alert-danger': notification.type === 'error' }">
+    {{error.message}}
+    </div>
+</div>

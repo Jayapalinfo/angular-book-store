@@ -1,9 +1,9 @@
-//Library imports
+// Library imports
 import {Injectable} from '@angular/core';
 import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 
-//Local imports
-import {AuthenticationService} from "../../../shared/services";
+// Local imports
+import {AuthenticationService} from '../../../shared/services';
 
 @Injectable({providedIn: 'root'})
 export class AuthGuard implements CanActivate {
@@ -13,7 +13,6 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const currentUser = this.authenticationService.currentUserValue;
-    console.log('currentUser',currentUser);
     if (currentUser) {
       // logged in already
       return true;

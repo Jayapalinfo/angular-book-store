@@ -1,10 +1,10 @@
-//Library imports
+// Library imports
 import {TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {throwError} from "rxjs";
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {throwError} from 'rxjs';
 
-//Local imports
+// Local imports
 import {GlobalErrorInterceptor} from './global-error.interceptor';
 
 describe('GlobalErrorInterceptor', () => {
@@ -39,6 +39,6 @@ describe('GlobalErrorInterceptor', () => {
       result => result,
       err => {
         expect(err.error.error.message).toEqual('test-error');
-      })
-  })
+      });
+  });
 });

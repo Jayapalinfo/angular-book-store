@@ -1,12 +1,12 @@
-//Library imports
+// Library imports
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {RouterTestingModule} from "@angular/router/testing";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
-//Local imports
+// Local imports
 import {BookStoreLoginComponent} from './book-store-login.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 describe('BookStoreLoginComponent', () => {
   let component: BookStoreLoginComponent;

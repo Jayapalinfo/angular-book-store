@@ -1,12 +1,12 @@
-//Library imports
+// Library imports
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable, BehaviorSubject, throwError} from "rxjs";
-import {catchError, map} from "rxjs/operators";
-import {Router} from "@angular/router";
+import {HttpClient} from '@angular/common/http';
+import {Observable, BehaviorSubject, throwError} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
-//Local imports
-import {User} from "../../admin/book-store/interfaces/user";
+// Local imports
+import {User} from '../../admin/book-store/interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -37,17 +37,18 @@ export class AuthenticationService {
     return this.http.post<User>(`/users/authenticate`, {username, password})
       .pipe(
         map(user => {
-            if (username == user.userName) {
+            if (username === user.userName) {
               localStorage.setItem('currentUser', JSON.stringify(user));
               this.currentUserSubject.next(user);
               return user;
             } else {
-              throw Error("Username or password is incorrect");
+              throw Error('Username or password is incorrect');
             }
           }
         ),
         catchError(error => {
-          return this.error(error.message);
+          error = [{type: 'error', messages: [{message: error.message}]}];
+          return throwError(error);
         })
       );
   }
@@ -66,6 +67,6 @@ export class AuthenticationService {
    * @param message error message
    */
   error(message) {
-    return throwError({error: {message}});
+    return throwError([{error: {message}}]);
   }
 }

@@ -1,40 +1,34 @@
-//Library imports
-import {Component, OnInit} from '@angular/core';
-import {Subscription} from "rxjs";
+// Library imports
+import {Component} from '@angular/core';
 
-//Local imports
-import {NotificationService} from "../../services";
+// Local imports
+import {NotificationService} from '../../services';
+import {GlobalErrorService} from '../../services/global-error.service';
 
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent {
 
-  private subscription: Subscription;
-  message: any;
+  notifications: Notifications[] = [];
 
-  constructor(private notificationService: NotificationService) {
+  constructor(private readonly notificationService: NotificationService, private readonly globalErrorService: GlobalErrorService) {
+    this.globalErrorService.errorObservable.subscribe(errors => {
+      this.notifications = errors;
+    });
+    this.notificationService.notificationObservable.subscribe(errors => {
+      this.notifications = errors;
+    });
   }
+}
 
-  ngOnInit() {
-    this.subscription = this.notificationService.getAlert()
-      .subscribe(message => {
-        switch (message && message.type) {
-          case 'success':
-            message.cssClass = 'alert alert-success';
-            break;
-          case 'error':
-            message.cssClass = 'alert alert-danger';
-            break;
-        }
-        this.message = message;
-      });
-  }
+export interface Notifications {
+  type?: string;
+  messages: NotificationsMessages[];
+}
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
+export interface NotificationsMessages {
+  message: string;
 }
