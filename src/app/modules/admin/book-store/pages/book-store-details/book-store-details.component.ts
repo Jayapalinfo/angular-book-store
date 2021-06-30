@@ -31,7 +31,6 @@ export class BookStoreDetailsComponent implements OnInit {
         this.book = data;
       },
       error => {
-        console.log('error',error);
         this.book = null;
       }
     );
