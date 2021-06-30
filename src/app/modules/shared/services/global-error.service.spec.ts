@@ -27,8 +27,7 @@ describe('GlobalErrorService', () => {
     const handleErrorRes = [{ type: 'error', messages: [{ message: 'Internal server error' }] }];
     service.handleError(errorResponse);
     service.errorObservable.subscribe(err => {
-      console.log('err',err);
-      expect(err).toEqual(handleErrorRes);
+      expect(err.error.errors).toEqual(handleErrorRes);
     });
   });
 

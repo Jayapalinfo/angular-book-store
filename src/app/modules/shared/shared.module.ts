@@ -31,6 +31,6 @@ export class SharedModule {
         GlobalErrorService,
         {provide: HTTP_INTERCEPTORS, useClass: GlobalErrorInterceptor, multi: true}
       ]
-    }
+    };
   }
 }

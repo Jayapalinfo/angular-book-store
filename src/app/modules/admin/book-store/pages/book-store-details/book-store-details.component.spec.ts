@@ -6,9 +6,9 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 // Local imports
 import {BookStoreDetailsComponent} from './book-store-details.component';
-import {BookStoreService} from "../../services";
-import {of, throwError} from "rxjs";
-import {Book} from "../../interfaces/book";
+import {BookStoreService} from '../../services';
+import {of, throwError} from 'rxjs';
+import {bookDetailsMock} from '../../mocks/book-details-response';
 
 describe('BookStoreDetailsComponent', () => {
   let component: BookStoreDetailsComponent;
@@ -44,10 +44,11 @@ describe('BookStoreDetailsComponent', () => {
   it('should retrieve data form get books ', () => {
     spyOn(bookStoreService, 'getBookDetails').and.callThrough()
       .and.returnValue(of(bookDetailsMock));
-    bookStoreService.getBookDetails('100').subscribe(bookDetailsMock => {
-      expect(component.getBookDetails).toHaveBeenCalled();
+    bookStoreService.getBookDetails('100').subscribe(result => {
+      expect(result.id).toEqual('100');
+      expect(result.title).toEqual('Head First Design Patterns');
     }, err => {
-      //component.book = null;
+      component.book = null;
       expect(component.book).toBe(null);
     });
     component.getBookDetails('100');
@@ -57,34 +58,20 @@ describe('BookStoreDetailsComponent', () => {
   it('should retrieve error ', () => {
     const errorObj = {
       error: {
-        errors:[{
+        errors: [{
           code: '500',
           message: 'Internal server error'
         }]
       }
-    }
+    };
     spyOn(bookStoreService, 'getBookDetails').and.callThrough()
       .and.returnValue(throwError(errorObj));
-    bookStoreService.getBookDetails('100').subscribe(bookDetailsMock => {
-      expect(component.getBookDetails).toHaveBeenCalled();
+    bookStoreService.getBookDetails('100').subscribe(result => {
+      expect(result.id).toBe(null);
     }, err => {
       expect(err).toBe(errorObj);
       expect(err.error.errors[0].code).toBe('500');
     });
     component.getBookDetails('100');
   });
-
-
 });
-
-export const bookDetailsMock: Book = {
-  id: '100',
-  title: 'Head First Design Patterns',
-  authors: 'Eric Freeman & Bert Bates & Kathy Sierra',
-  publisher: 'O\'REILY',
-  publishDate: '2004-10-20',
-  description: 'This edition of Head First Design Patterns—now updated for Java 8—shows you the tried-and-true, road-tested patterns used by developers to create functional, elegant, reusable, and flexible software',
-  averageRating: '4.5',
-  totalPages: 679,
-  price: 1150.00
-}

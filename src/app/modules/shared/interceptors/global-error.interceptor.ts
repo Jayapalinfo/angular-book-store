@@ -26,6 +26,6 @@ export class GlobalErrorInterceptor {
         this.globalErrorService.handleError(error);
         return throwError(error);
       }
-    }))
+    }));
   }
 }

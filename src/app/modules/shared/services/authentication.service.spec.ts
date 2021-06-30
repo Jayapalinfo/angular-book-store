@@ -5,11 +5,11 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 // Local imports
 import {AuthenticationService} from './authentication.service';
-import {Observable, of, throwError} from "rxjs";
+import {of} from 'rxjs';
 
 describe('AuthenticationService', () => {
   let service: AuthenticationService;
-  let httpClientSpy: { post: jasmine.Spy }
+  let httpClientSpy: { post: jasmine.Spy };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -28,28 +28,28 @@ describe('AuthenticationService', () => {
   });
 
   it('should login success', () => {
-    const user: any ={
+    const user: any = {
       id: 100,
       userName: 'admin',
       firstName: 'Admin',
       lastName: 'Admin'
     };
     httpClientSpy.post.and.returnValue(of(user));
-    service.login('admin','admin').subscribe( data => {
-      console.log('data',data.userName);
+    service.login('admin', 'admin').subscribe(data => {
+      console.log('data', data.userName);
       expect(data.userName).toEqual('admin');
     });
   });
 
   it('should login failed', () => {
-    const user: any ={
+    const user: any = {
       id: 100,
       userName: 'admin',
       firstName: 'Admin',
       lastName: 'Admin'
     };
     httpClientSpy.post.and.returnValue(of(user));
-    service.login('admin123','admin').subscribe( err => {
+    service.login('admin123', 'admin').subscribe(err => {
     });
   });
 
